@@ -1,12 +1,20 @@
 import logo from './logo.svg';
-import './App.css';
+// import './App.css';
+import Signup from './components/pages/Signup';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1 className="App-title">React-Share-Social</h1>
-      </header>
+      {/* 
+      //Router
+      //Signin
+      //Signup
+      //forgot password
+      //login with google
+      */}
+   
+        <Signup/>
+     
     </div>
   );
 }
