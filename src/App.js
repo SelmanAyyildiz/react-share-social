@@ -1,5 +1,5 @@
-import logo from './logo.svg';
-// import './App.css';
+
+import Navbar from './components/navbar/Navbar';
 import Signup from './components/pages/Signup';
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
       //forgot password
       //login with google
       */}
-   
+        <Navbar/>
         <Signup/>
      
     </div>
