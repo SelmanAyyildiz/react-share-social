@@ -3,6 +3,7 @@ import Navbar from './components/navbar/Navbar';
 import Signup from './components/pages/Signup';
 
 function App() {
+
   return (
     <div className="App">
       {/* 

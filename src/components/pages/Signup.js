@@ -2,6 +2,8 @@ import React from 'react'
 import {TextField, Button, Grid, Container} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useFormik } from 'formik';
+import firebase from '../../firebase/firebase.utils';
+
 
 const useStyles = makeStyles({
   wrapper: {
@@ -12,6 +14,7 @@ const useStyles = makeStyles({
   }
 });
 function Signup() {
+  // console.log("🚀🚀🚀 firebase", firebase)
   const formik = useFormik({
     initialValues: {
       displayName: '',
@@ -20,9 +23,10 @@ function Signup() {
     },
     onSubmit: values => {
       alert(JSON.stringify(values, null, 2));
+      // firebase.register(values.email, values.password);
     },
   });
-  console.log(formik);
+  // console.log(formik);
  const signUpStyles = useStyles();
     return (
      
