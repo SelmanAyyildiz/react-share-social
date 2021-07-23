@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   }
 });
 function Signup() {
-  // console.log("🚀🚀🚀 firebase", firebase)
+  
   const formik = useFormik({
     initialValues: {
       displayName: '',
@@ -22,12 +22,15 @@ function Signup() {
       password: '',
     },
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
-      // firebase.register(values.email, values.password);
+      // alert(JSON.stringify(values, null, 2));
+      firebase.register(values.email, values.password);
     },
   });
-  // console.log(formik);
+
  const signUpStyles = useStyles();
+ const handleGoogleBtnClick = () => {
+   firebase.signInWithGoogle();
+ }
     return (
      
         <Container className={signUpStyles.wrapper} maxWidth="sm">
@@ -65,11 +68,11 @@ function Signup() {
         </Grid>
 
         <Grid item xs={12}>
-        <Button type='submit' variant="contained" color="primary"fullWidth>Submit</Button>
+        <Button type='submit' variant="contained" color="primary"fullWidth>Register</Button>
         </Grid>
 
         <Grid item xs={12}>
-        <Button variant="contained" color="secondary"fullWidth>SignUp with Google</Button>
+        <Button variant="contained" color="secondary"fullWidth onClick={handleGoogleBtnClick}>SignUp with Google</Button>
         </Grid>
 
         </Grid>
