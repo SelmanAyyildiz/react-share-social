@@ -63,11 +63,11 @@ function Signin() {
             </Grid>
     
             <Grid item xs={12}>
-            <Button type='submit' variant="contained" color="primary"fullWidth>Register</Button>
+            <Button type='submit' variant="contained" color="primary"fullWidth>LOGIN</Button>
             </Grid>
     
             <Grid item xs={12}>
-            <Button variant="contained" color="secondary"fullWidth onClick={handleGoogleBtnClick}>SignUp with Google</Button>
+            <Button variant="contained" color="secondary"fullWidth onClick={handleGoogleBtnClick}>SignIn with Google</Button>
             </Grid>
     
             </Grid>

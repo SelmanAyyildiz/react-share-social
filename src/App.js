@@ -1,25 +1,15 @@
 
-import Navbar from './components/Navbar';
-import Signin from './pages/Signin';
-import Signup from './pages/Signup';
+import AuthContext from './context/AuthContext';
 import RouterFunction from './Router/Router';
 
 function App() {
 
   return (
     <div className="App">
-
+      <AuthContext>
       <RouterFunction/>
-      {/* 
-      //Router
-      //Signin
-      //Signup
-      //forgot password
-      //login with google
-      */}
-        {/* <Navbar/> */}
-        {/* <Signup/> */}
-        {/* <Signin/> */}
+      </AuthContext>
+     
      
     </div>
   );
