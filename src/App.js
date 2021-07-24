@@ -1,12 +1,15 @@
 
-import Navbar from './components/navbar/Navbar';
-import Signin from './components/pages/Signin';
-import Signup from './components/pages/Signup';
+import Navbar from './components/Navbar';
+import Signin from './pages/Signin';
+import Signup from './pages/Signup';
+import RouterFunction from './Router/Router';
 
 function App() {
 
   return (
     <div className="App">
+
+      <RouterFunction/>
       {/* 
       //Router
       //Signin
@@ -14,9 +17,9 @@ function App() {
       //forgot password
       //login with google
       */}
-        <Navbar/>
+        {/* <Navbar/> */}
         {/* <Signup/> */}
-        <Signin/>
+        {/* <Signin/> */}
      
     </div>
   );
