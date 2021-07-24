@@ -1,5 +1,6 @@
 
 import Navbar from './components/navbar/Navbar';
+import Signin from './components/pages/Signin';
 import Signup from './components/pages/Signup';
 
 function App() {
@@ -14,7 +15,8 @@ function App() {
       //login with google
       */}
         <Navbar/>
-        <Signup/>
+        {/* <Signup/> */}
+        <Signin/>
      
     </div>
   );
