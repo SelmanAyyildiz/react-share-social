@@ -4,7 +4,7 @@ import firebase from '../firebase/firebase.utils';
 export const FirebaseAuthContext = createContext();
 
  function AuthContext(props) {
-    const[isAuth, setIsAuth]=useState(false);
+    // const[isAuth, setIsAuth]=useState(false);
     const[currentUser, setCurrentUser]=useState(null);
 
     useEffect(()=>{

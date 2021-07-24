@@ -9,8 +9,6 @@ function App() {
       <AuthContext>
       <RouterFunction/>
       </AuthContext>
-     
-     
     </div>
   );
 }

@@ -28,7 +28,7 @@ export default function Navbar() {
   const {currentUser} = useContext(FirebaseAuthContext);
   console.log("🚀🚀🚀", currentUser)
   const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
+  // const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -40,9 +40,9 @@ export default function Navbar() {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
+  const handleClose =useCallback( () => {
     setAnchorEl(null);
-  };
+  },[]);
   const handleSignOut =useCallback( () => {
     firebase.signOut();
   },[]);
@@ -63,7 +63,7 @@ export default function Navbar() {
           <Typography variant="h6" className={classes.title}>
             React-Share-Social
           </Typography>
-          {auth && (
+          {currentUser && (
             <div>
               <IconButton
                 aria-label="account of current user"
@@ -98,6 +98,7 @@ export default function Navbar() {
               </Menu>
             </div>
           )}
+          
         </Toolbar>
       </AppBar>
     </div>

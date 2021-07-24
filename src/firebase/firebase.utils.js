@@ -21,8 +21,20 @@ class Firebase {
         firebase.initializeApp(config);
         this.firebaseAuth = firebase.auth();
     }
-    register(email, password) {
-        this.firebaseAuth.createUserWithEmailAndPassword(email, password);
+    async register( displayName, email, password) {
+         
+
+        try {
+            await this.firebaseAuth.createUserWithEmailAndPassword(email, password);
+            this.firebaseAuth.currentUser.updateProfile({
+            displayName,
+        });
+            
+        }catch (error) {
+                console.log("Register Eror", error);
+            }
+
+       
     }
     signInWithGoogle() {
         const googleProvider = new firebase.auth.GoogleAuthProvider();
@@ -32,9 +44,16 @@ class Firebase {
         });
         this.firebaseAuth.signInWithPopup(googleProvider);
     }
+
+    signIn(email, password) {
+    this.firebaseAuth.signInWithEmailAndPassword(email, password);
+    }
+
+
     signOut() {
         this.firebaseAuth.signOut();
     }
+    
  
 
 }

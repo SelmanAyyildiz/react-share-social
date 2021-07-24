@@ -27,7 +27,8 @@ function Signin() {
     firebase.signInWithGoogle();
   };
   const handleFormSubmit = (values) => {
-    alert(JSON.stringify(values, null, 2));
+    // alert(JSON.stringify(values, null, 2));
+    firebase.signIn(values.email, values.password);
   };
     return (
      
@@ -47,8 +48,7 @@ function Signin() {
               fullWidth={true}
               value={values.email}
               onChange={handleChange}
-             
-              fullWidth/>
+              />
             </Grid>
     
             <Grid item xs={12}>
