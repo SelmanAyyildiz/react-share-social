@@ -68,8 +68,9 @@ export default function Navbar() {
                 onClick={handleMenu}
                 color="inherit"
               >
-                  <>Display Name</> 
-                  {/* //TODO: from firebase */}
+                  <>{currentUser?.displayName}
+                {/* TODO: currentUser.photoURL */}
+                 </> 
                 <AccountCircle />
               </IconButton>
               <Menu
