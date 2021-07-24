@@ -1,4 +1,4 @@
-import React,{useContext} from 'react';
+import React,{useCallback, useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -9,6 +9,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import {FirebaseAuthContext} from '../context/AuthContext';
+import firebase from '../firebase/firebase.utils';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,6 +43,9 @@ export default function Navbar() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const handleSignOut =useCallback( () => {
+    firebase.signOut();
+  },[]);
 
   return (
     <div className={classes.root}>
@@ -90,6 +94,7 @@ export default function Navbar() {
               >
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
                 <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleSignOut}>Sign Out</MenuItem>
               </Menu>
             </div>
           )}
