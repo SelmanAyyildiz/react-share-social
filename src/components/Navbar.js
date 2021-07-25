@@ -35,6 +35,17 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: 'none',
     fontWeight: 'bold',
   },
+ 
+  avatarImg : {
+        borderRadius: '50%',
+        width: 25,
+        height: 25,
+        marginRight: theme.spacing(1),
+       
+    },
+  
+  
+
 }));
 
 export default function Navbar() {
@@ -76,9 +87,10 @@ export default function Navbar() {
                 onClick={handleMenu}
                 color="inherit"
               >
-                  <>{currentUser?.displayName}
-                {/* TODO: currentUser.photoURL */}
-                 </> 
+                  <div className={classes.avatar}>
+                   <img src={currentUser?.photoURL} alt="avatar" className={classes.avatarImg}/>
+                   {currentUser?.displayName}
+                 </div> 
                 <AccountCircle />
               </IconButton>
               <Menu
