@@ -5,7 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import AccountCircle from '@material-ui/icons/AccountCircle';
+// import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import {FirebaseAuthContext} from '../context/AuthContext';
@@ -27,7 +27,6 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: 'wrap',
     alignItems: 'center',
     padding: theme.spacing(0, 2),
-    
   },
   link: {
     margin: theme.spacing(1),
@@ -35,14 +34,20 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: 'none',
     fontWeight: 'bold',
   },
- 
   avatarImg : {
         borderRadius: '50%',
         width: 25,
         height: 25,
         marginRight: theme.spacing(1),
-       
+      border: '1px solid lightblue',
     },
+    avatar: {
+      alignItems: 'center',
+      display: 'flex',
+      flexWrap: 'wrap',
+      fontSize: '1.3rem',
+      justifyContent: 'spaceEvenly',
+    }
   
   
 
@@ -87,11 +92,10 @@ export default function Navbar() {
                 onClick={handleMenu}
                 color="inherit"
               >
-                  <div className={classes.avatar}>
-                   <img src={currentUser?.photoURL} alt="avatar" className={classes.avatarImg}/>
-                   {currentUser?.displayName}
-                 </div> 
-                <AccountCircle />
+              <div className={classes.avatar}>
+                  <h6 style={{margin:"0.3rem"}}>{currentUser?.displayName}</h6>
+                  {currentUser?.photoURL ? (<img src={currentUser?.photoURL} alt="avatar" className={classes.avatarImg}/>):null}
+                </div> 
               </IconButton>
               <Menu
                 id="menu-appbar"
@@ -114,7 +118,7 @@ export default function Navbar() {
               </Menu>
             </div>
           ):
-           <div className={classes.linkWrapper}>
+            <div className={classes.linkWrapper}>
             <Link href="/login" className={classes.link}>Login</Link>
             <Link href="/register" className={classes.link}>Register</Link>
             </div>
