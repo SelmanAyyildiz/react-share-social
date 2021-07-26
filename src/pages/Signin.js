@@ -3,7 +3,16 @@ import {TextField, Button, Grid, Container} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Formik } from 'formik';
 import firebase from '../firebase/firebase.utils';
+import * as Yup from 'yup';
 
+
+const signInSchema = Yup.object().shape({
+ email:Yup.string().email("Invalid Email").required('Email Is Required'),
+ password:Yup.string().required('Password Is Required')
+                      .min(6, 'Password Must Be At Least 6 Characters') 
+                      .max(20, 'Password Must Be At Most 20 Characters')
+                      .matches(/^[a-zA-Z0-9]+$/, 'Password Must Be Alphanumeric'),
+})
 
 const useStyles = makeStyles({
   wrapper: {
@@ -35,12 +44,14 @@ function Signin() {
         <Container className={signInStyles.wrapper} maxWidth="sm">
           <Formik
           initialValues={initialValues}
+          validationSchema={signInSchema}
           onSubmit={handleFormSubmit}>
 
-          {({handleSubmit, values, handleChange}) => (
+          {({handleSubmit, values, handleChange, errors}) => (
                <form onSubmit={handleSubmit}>
             <Grid container spacing={4}>
             <Grid item xs={12}>
+
             <TextField
               name="email"
               label="Email"
@@ -48,7 +59,9 @@ function Signin() {
               fullWidth={true}
               value={values.email}
               onChange={handleChange}
-              />
+              error={errors.email}
+              helperText={errors.email}
+               />
             </Grid>
     
             <Grid item xs={12}>
@@ -59,7 +72,10 @@ function Signin() {
               type="password"
               value={values.password}
               onChange={handleChange}
-              fullWidth/>
+              fullWidth
+              error={errors.password}
+              helperText={errors.password}
+              />
             </Grid>
     
             <Grid item xs={12}>
