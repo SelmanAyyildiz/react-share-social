@@ -4,6 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Formik } from 'formik';
 import firebase from '../firebase/firebase.utils';
 import * as Yup from 'yup';
+import LockIcon from '@material-ui/icons/Lock';
+import Avatar from '@material-ui/core/Avatar';
 
 
 const signInSchema = Yup.object().shape({
@@ -18,8 +20,18 @@ const useStyles = makeStyles({
   wrapper: {
     marginTop:"5rem"
   },
-  input: {
-    border: '1px solid red',
+  loginBtn:{
+    color:"white",
+    fontWeight: "bold",
+  },
+  googleBtn:{
+    backgroundColor:"#EA4335",
+    color:"white",
+    fontWeight: "bold",
+ },
+  avatar:{
+    margin:"5rem auto"
+    
   }
 });
 
@@ -30,7 +42,7 @@ const initialValues = {
 
 function Signin() {
   
-  const signInStyles = useStyles();
+  const classes = useStyles();
   
   const handleGoogleBtnClick = () => {
     firebase.signInWithGoogle();
@@ -41,7 +53,11 @@ function Signin() {
   };
     return (
      
-        <Container className={signInStyles.wrapper} maxWidth="sm">
+        <Container className={classes.wrapper} maxWidth="sm">
+          <Avatar className={classes.avatar}>
+          <LockIcon />
+          </Avatar>
+          <p>Login</p>
           <Formik
           initialValues={initialValues}
           validationSchema={signInSchema}
@@ -79,11 +95,11 @@ function Signin() {
             </Grid>
     
             <Grid item xs={12}>
-            <Button type='submit' variant="contained" color="primary"fullWidth>LOGIN</Button>
+            <Button type='submit' className={classes.loginBtn} variant="contained" color="primary"fullWidth>LOGIN</Button>
             </Grid>
     
             <Grid item xs={12}>
-            <Button variant="contained" color="secondary"fullWidth onClick={handleGoogleBtnClick}>SignIn with Google</Button>
+            <Button variant="contained" className={classes.googleBtn} color="secondary"fullWidth onClick={handleGoogleBtnClick}>Login with Google</Button>
             </Grid>
     
             </Grid>
