@@ -1,5 +1,5 @@
 import React from 'react'
-import {TextField, Button, Grid, Container} from '@material-ui/core';
+import {TextField, Button, Grid, Container, ThemeProvider} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Formik } from 'formik';
 import firebase from '../firebase/firebase.utils';
@@ -16,7 +16,7 @@ const signInSchema = Yup.object().shape({
                       .matches(/^[a-zA-Z0-9]+$/, 'Password Must Be Alphanumeric'),
 })
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme)=>({
   wrapper: {
     marginTop:"5rem"
   },
@@ -28,12 +28,23 @@ const useStyles = makeStyles({
     backgroundColor:"#EA4335",
     color:"white",
     fontWeight: "bold",
- },
+  },
   avatar:{
-    margin:"5rem auto"
+    margin:"2rem auto",
+    
+    
+  },
+  p:{
+    fontSize:"1.5rem",
+    width: "inherit",
+    marginBottom: "1rem",
+    display: "flex",
+    justifyContent: "center",
+   
+
     
   }
-});
+}));
 
 const initialValues = {
   email: '',
@@ -57,7 +68,7 @@ function Signin() {
           <Avatar className={classes.avatar}>
           <LockIcon />
           </Avatar>
-          <p>Login</p>
+          <div className={classes.p}>Log In</div>
           <Formik
           initialValues={initialValues}
           validationSchema={signInSchema}
