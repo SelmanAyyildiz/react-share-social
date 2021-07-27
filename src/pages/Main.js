@@ -1,16 +1,17 @@
 import React from 'react'
 import { makeStyles} from '@material-ui/core/styles';
-import {Container} from '@material-ui/core';
+import {Container, Grid, capitalize} from '@material-ui/core';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import MediaCard from '../components/MediaCard';
 const styles = makeStyles((theme)=>{
 
     return {
         wrapper: {
             fontSize: theme.typography.pxToRem(20),
             textAlign: 'center',
-            margin: theme.spacing(10),
+            marginTop: theme.spacing(10),
+            margin: theme.spacing("auto"),
             height: 'calc(100vh - 19rem)',
         },
     }
@@ -29,10 +30,18 @@ function Main() {
     },[])
      console.log(userList)
     return (
-        <Container className={classes.wrapper} maxWidth="sm">
+        <Container className={classes.wrapper} >
+            <Grid container spacing={3}>
             {userList?.map((user,index)=> {
-                return <div key={index}>{`${user.title} ${user.firstName} ${user.lastName}`}</div>
-            })}
+                return(
+                    <Grid item sm={4}  key={index}>
+                    <MediaCard key={index} userImage={user.picture} userEmail={user.email} userName={`${capitalize(user.title)} ${user.firstName} ${user.lastName}`}/>
+                    
+            </Grid>
+            )
+        })}
+                
+            </Grid>
         </Container>
     )
 }
