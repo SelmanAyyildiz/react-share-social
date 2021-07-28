@@ -4,6 +4,8 @@ import {Container, Grid, capitalize} from '@material-ui/core';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import MediaCard from '../components/MediaCard';
+
+
 const styles = makeStyles((theme)=>{
 
     return {
@@ -35,7 +37,7 @@ function Main() {
             {userList?.map((user,index)=> {
                 return(
                     <Grid item sm={4}  key={index}>
-                    <MediaCard key={index} userImage={user.picture} userEmail={user.email} userName={`${capitalize(user.title)} ${user.firstName} ${user.lastName}`}/>
+                    <MediaCard key={index} id={user.id} userImage={user.picture} userEmail={user.email} userName={`${capitalize(user.title)} ${user.firstName} ${user.lastName}`}/>
                     
             </Grid>
             )
