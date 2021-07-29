@@ -8,6 +8,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { useHistory } from "react-router-dom";
+import PropTypes from 'prop-types';
+
 
 const useStyles = makeStyles({
   root: {
@@ -48,4 +50,12 @@ export default function MediaCard({id, userImage, userName, userEmail}) {
       </CardActions>
     </Card>
   );
+}
+
+MediaCard.propTypes = {
+  id: PropTypes.string.isRequired,
+  userImage: PropTypes.string,
+  userName: PropTypes.string,
+  userEmail: PropTypes.string,
+
 }
