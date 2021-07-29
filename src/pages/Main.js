@@ -30,7 +30,7 @@ function Main() {
     useEffect(()=>{
         fetchData();
     },[])
-     console.log(userList)
+     console.log("Mainnnn",userList)
     return (
         <Container className={classes.wrapper} >
             <Grid container spacing={3}>
