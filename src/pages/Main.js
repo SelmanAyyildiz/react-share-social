@@ -4,6 +4,7 @@ import {Container, Grid, capitalize} from '@material-ui/core';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import MediaCard from '../components/MediaCard';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 
 const styles = makeStyles((theme)=>{
@@ -16,6 +17,14 @@ const styles = makeStyles((theme)=>{
             margin: theme.spacing("auto"),
             height: 'calc(100vh - 19rem)',
         },
+        circul: {
+            
+            position: 'absolute',
+            right: '50%',
+            left: '50%',
+            top: '50%',
+            bottom: '50%',
+        }
     }
 })
 function Main() {
@@ -30,21 +39,22 @@ function Main() {
     useEffect(()=>{
         fetchData();
     },[])
-     console.log("Mainnnn",userList)
+    console.log("Mainnnn",userList)
     return (
+
         <Container className={classes.wrapper} >
-            <Grid container spacing={3}>
+            
+            {!userList ? <CircularProgress className={classes.circul}/> : ( <Grid container spacing={3}>
             {userList?.map((user,index)=> {
                 return(
                     <Grid item sm={4}  key={index}>
                     <MediaCard key={index} id={user.id} userImage={user.picture} userEmail={user.email} userName={`${capitalize(user.title)} ${user.firstName} ${user.lastName}`}/>
-                    
             </Grid>
             )
         })}
-                
-            </Grid>
+            </Grid>)}
         </Container>
+        
     )
 }
 

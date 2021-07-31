@@ -25,6 +25,14 @@ const styles = makeStyles((theme)=>{
         },
         text:{
             minWidth:"16rem"
+        },
+        circul: {
+            
+            position: 'absolute',
+            right: '50%',
+            left: '47%',
+            top: '30%',
+            bottom: '50%',
         }
       
     }
@@ -36,13 +44,13 @@ const {id} = useParams();
 const [userDetail, setUserDetail] = useState();
 useEffect(()=>{
    fetchData(`user/${id}`).then((res) => setUserDetail(res)).catch().finally();
-},[id])
+},[])
 console.log(userDetail)
     return (
         <Container className={classes.wrapper} >
-            {!userDetail ? <CircularProgress /> : <>
+            {!userDetail ? <CircularProgress className={classes.circul} /> : <>
             <img className={classes.userPicture} src={userDetail?.picture} alt={userDetail?.firstName + ".jpeg"}/>
-            <Typography className={classes.text} variant="h4">{userDetail.title} {userDetail?.firstName} {userDetail?.lastName}</Typography>
+            <Typography className={classes.text} variant="h4">{userDetail?.title} {userDetail?.firstName} {userDetail?.lastName}</Typography>
             <Typography className={classes.text} variant="h6">{userDetail?.email}</Typography>
             <Typography className={classes.text} variant="h6">{userDetail?.dateOfBirth}</Typography>
             <Typography className={classes.text} variant="h6">{userDetail?.registerDate}</Typography>
