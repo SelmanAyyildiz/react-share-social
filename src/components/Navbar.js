@@ -10,7 +10,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import {FirebaseAuthContext} from '../context/AuthContext';
 import firebase from '../firebase/firebase.utils';
-import Link from '@material-ui/core/Link';
+import { Link as LINK} from 'react-router-dom'
+import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
+import { Link } from '@material-ui/core';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -71,6 +74,7 @@ export default function Navbar() {
   },[]);
   const handleSignOut =useCallback( () => {
     firebase.signOut();
+   
   },[]);
 
   return (
@@ -85,6 +89,7 @@ export default function Navbar() {
           </Typography>
           {currentUser ? (
             <div>
+              
               <IconButton
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
@@ -119,6 +124,7 @@ export default function Navbar() {
             </div>
           ):
             <div className={classes.linkWrapper}>
+            <LINK to="/"><HomeRoundedIcon  style={{color:"white"}} fontSize="large"  /></LINK>
             <Link href="/login" className={classes.link}>Login</Link>
             <Link href="/register" className={classes.link}>Register</Link>
             </div>
