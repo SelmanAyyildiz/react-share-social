@@ -4,7 +4,7 @@ import { fetchData } from '../helper/FetchData';
 import {Container, Grid, Typography} from '@material-ui/core';
 import { makeStyles} from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
-
+import { format as formatDate, parseISO } from 'date-fns'
 
 
 const styles = makeStyles((theme)=>{
@@ -52,8 +52,8 @@ console.log(userDetail)
             <img className={classes.userPicture} src={userDetail?.picture} alt={userDetail?.firstName + ".jpeg"}/>
             <Typography className={classes.text} variant="h4">{userDetail?.title} {userDetail?.firstName} {userDetail?.lastName}</Typography>
             <Typography className={classes.text} variant="h6">{userDetail?.email}</Typography>
-            <Typography className={classes.text} variant="h6">{userDetail?.dateOfBirth}</Typography>
-            <Typography className={classes.text} variant="h6">{userDetail?.registerDate}</Typography>
+            <Typography className={classes.text} variant="h6">{formatDate(parseISO(userDetail?.dateOfBirth),'MMM/dd/yy')}</Typography>
+            <Typography className={classes.text} variant="h6">{formatDate(parseISO(userDetail?.registerDate),'MM/dd/yy')}</Typography>
             <Typography className={classes.text} variant="h6">{userDetail?.phone}</Typography>
             {/* <Typography variant="h6">{userDetail?.location}</Typography> */}
           {/* {JSON.stringify(userDetail)} */}
