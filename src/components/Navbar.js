@@ -89,6 +89,7 @@ export default function Navbar() {
           </Typography>
           {currentUser ? (
             <div>
+              <LINK to="/"><HomeRoundedIcon  style={{color:"white"}} fontSize="large"  /></LINK>
               
               <IconButton
                 aria-label="account of current user"
@@ -97,11 +98,13 @@ export default function Navbar() {
                 onClick={handleMenu}
                 color="inherit"
               >
+
               <div className={classes.avatar}>
                   <h6 style={{margin:"0.3rem"}}>{currentUser?.displayName}</h6>
                   {currentUser?.photoURL ? (<img src={currentUser?.photoURL} alt="avatar" className={classes.avatarImg}/>):null}
                 </div> 
               </IconButton>
+              
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
